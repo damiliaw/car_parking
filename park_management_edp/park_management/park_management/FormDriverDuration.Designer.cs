@@ -87,6 +87,7 @@
             this.button1H.TabIndex = 3;
             this.button1H.Text = "1H";
             this.button1H.UseVisualStyleBackColor = true;
+            this.button1H.Click += new System.EventHandler(this.button1H_Click);
             // 
             // button2H
             // 
@@ -97,6 +98,7 @@
             this.button2H.TabIndex = 4;
             this.button2H.Text = "2H";
             this.button2H.UseVisualStyleBackColor = true;
+            this.button2H.Click += new System.EventHandler(this.button2H_Click);
             // 
             // button3H
             // 
@@ -107,6 +109,7 @@
             this.button3H.TabIndex = 5;
             this.button3H.Text = "3H";
             this.button3H.UseVisualStyleBackColor = true;
+            this.button3H.Click += new System.EventHandler(this.button3H_Click);
             // 
             // button4H
             // 
@@ -117,6 +120,7 @@
             this.button4H.TabIndex = 6;
             this.button4H.Text = "4H";
             this.button4H.UseVisualStyleBackColor = true;
+            this.button4H.Click += new System.EventHandler(this.button4H_Click);
             // 
             // labelCustomeHours
             // 
@@ -168,6 +172,7 @@
             this.labelTotalFee.Size = new System.Drawing.Size(112, 18);
             this.labelTotalFee.TabIndex = 11;
             this.labelTotalFee.Text = "output BaseFee";
+            this.labelTotalFee.Click += new System.EventHandler(this.labelTotalFee_Click);
             // 
             // labelTotalHR
             // 
@@ -179,6 +184,7 @@
             this.labelTotalHR.Size = new System.Drawing.Size(112, 18);
             this.labelTotalHR.TabIndex = 12;
             this.labelTotalHR.Text = "output Total HR";
+            this.labelTotalHR.Click += new System.EventHandler(this.labelTotalHR_Click);
             // 
             // labelTotalPay
             // 
@@ -190,6 +196,7 @@
             this.labelTotalPay.Size = new System.Drawing.Size(107, 22);
             this.labelTotalPay.TabIndex = 13;
             this.labelTotalPay.Text = "Total to Pay";
+            this.labelTotalPay.Click += new System.EventHandler(this.labelTotalPay_Click);
             // 
             // labelOutputTotalPay
             // 
@@ -201,6 +208,7 @@
             this.labelOutputTotalPay.Size = new System.Drawing.Size(142, 22);
             this.labelOutputTotalPay.TabIndex = 14;
             this.labelOutputTotalPay.Text = "output Total Pay";
+            this.labelOutputTotalPay.Click += new System.EventHandler(this.labelOutputTotalPay_Click);
             // 
             // buttonConfirm
             // 
@@ -213,6 +221,7 @@
             this.buttonConfirm.TabIndex = 15;
             this.buttonConfirm.Text = "Confirm - proceed to pay";
             this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // button2
             // 
@@ -224,6 +233,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 

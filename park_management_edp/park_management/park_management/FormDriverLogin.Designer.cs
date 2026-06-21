@@ -128,6 +128,7 @@
             this.buttonBackLanding.TabIndex = 7;
             this.buttonBackLanding.Text = "Back to Landing";
             this.buttonBackLanding.UseVisualStyleBackColor = false;
+            this.buttonBackLanding.Click += new System.EventHandler(this.buttonBackLanding_Click);
             // 
             // textBoxPurpose
             // 

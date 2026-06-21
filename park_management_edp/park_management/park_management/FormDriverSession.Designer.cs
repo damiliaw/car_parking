@@ -350,6 +350,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormDriverSession";
             this.Text = "FormDriverSession";
+            this.Load += new System.EventHandler(this.FormDriverSession_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

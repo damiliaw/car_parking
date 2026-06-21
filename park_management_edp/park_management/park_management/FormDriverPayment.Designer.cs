@@ -62,6 +62,7 @@
             this.buttonBack.TabIndex = 33;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonPay
             // 
@@ -74,6 +75,7 @@
             this.buttonPay.TabIndex = 32;
             this.buttonPay.Text = " output Pay RM";
             this.buttonPay.UseVisualStyleBackColor = false;
+            this.buttonPay.Click += new System.EventHandler(this.buttonPay_Click);
             // 
             // labelOutputTotalDue
             // 
@@ -186,6 +188,7 @@
             this.buttonCash.TabIndex = 20;
             this.buttonCash.Text = "Cash";
             this.buttonCash.UseVisualStyleBackColor = false;
+            this.buttonCash.Click += new System.EventHandler(this.buttonCash_Click);
             // 
             // buttonCard
             // 
@@ -196,6 +199,7 @@
             this.buttonCard.TabIndex = 21;
             this.buttonCard.Text = "Card";
             this.buttonCard.UseVisualStyleBackColor = true;
+            this.buttonCard.Click += new System.EventHandler(this.buttonCard_Click);
             // 
             // buttonOnline
             // 
@@ -206,6 +210,7 @@
             this.buttonOnline.TabIndex = 22;
             this.buttonOnline.Text = "Online";
             this.buttonOnline.UseVisualStyleBackColor = true;
+            this.buttonOnline.Click += new System.EventHandler(this.buttonOnline_Click);
             // 
             // labelOutputHC
             // 
@@ -315,6 +320,7 @@
             this.Controls.Add(this.label5);
             this.Name = "FormDriverPayment";
             this.Text = "FormDriverPayment";
+            this.Load += new System.EventHandler(this.FormDriverPayment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
