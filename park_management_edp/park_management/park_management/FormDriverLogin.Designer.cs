@@ -1,4 +1,6 @@
-﻿namespace Project_EDP
+﻿using System;
+
+namespace Project_EDP
 {
     partial class FormDriverLogin
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelTItle = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.labelEnter = new System.Windows.Forms.Label();
             this.labelPlateNumber = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,18 +42,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // labelTItle
+            // labelTitle
             // 
-            this.labelTItle.AutoSize = true;
-            this.labelTItle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(123)))), ((int)(((byte)(95)))));
-            this.labelTItle.Font = new System.Drawing.Font("Lucida Sans", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTItle.Location = new System.Drawing.Point(274, 63);
-            this.labelTItle.Name = "labelTItle";
-            this.labelTItle.Size = new System.Drawing.Size(258, 42);
-            this.labelTItle.TabIndex = 0;
-            this.labelTItle.Text = "Driver Portal";
-            this.labelTItle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.labelTItle.Click += new System.EventHandler(this.labelTItle_Click);
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(123)))), ((int)(((byte)(95)))));
+            this.labelTitle.Font = new System.Drawing.Font("Lucida Sans", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(274, 63);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(258, 42);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "Driver Portal";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
             // 
             // labelEnter
             // 
@@ -153,7 +155,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(203)))), ((int)(((byte)(177)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelEnter);
-            this.Controls.Add(this.labelTItle);
+            this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.textBoxPurpose);
             this.Controls.Add(this.buttonBackLanding);
             this.Controls.Add(this.buttonEnter);
@@ -164,14 +166,16 @@
             this.Controls.Add(this.label2);
             this.Name = "FormDriverLogin";
             this.Text = "FormDriverLogin";
+            this.Load += new System.EventHandler(this.FormDriverLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+
         #endregion
 
-        private System.Windows.Forms.Label labelTItle;
+        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelEnter;
         private System.Windows.Forms.Label labelPlateNumber;
         private System.Windows.Forms.Label label1;

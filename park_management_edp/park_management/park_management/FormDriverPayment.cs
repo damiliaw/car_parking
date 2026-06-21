@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace park_management
 {
     public partial class FormDriverPayment : Form
     {
-        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarParkDB.mdf;Integrated Security=True;";
+        // 1. Alamat pautan database MDF laluan penuh PC kau
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\source\repos\carParkSystem\carParkSystem\CarParkDB.mdf;Integrated Security=True;";
 
+        // 2. Isytihar Variable Global
         private string licensePlate;
         private int durationHours;
         private double baseFee;
         private double hourlyCharge;
         private double totalDue;
         private string slotNumber;
-        private string chosenMethod = "Cash"; // Default method
+        private int transactionId;
+        private string chosenMethod = "Cash"; // Default method jika user tak tekan butang lain
 
-        // CONSTRUCTOR SEPADAN: Menyambut tepat 6 data (Sama padan dengan penghantar)
-        public FormDriverPayment(string plate, int hours, double bFee, double hCharge, double total, string slot)
+        // CONSTRUCTOR UTAMA: Menyambut 7 data tepat dari Form Duration
+        public FormDriverPayment(string plate, int hours, double bFee, double hCharge, double total, string slot, int txnId)
         {
             InitializeComponent();
             this.licensePlate = plate;
@@ -33,9 +29,19 @@ namespace park_management
             this.hourlyCharge = hCharge;
             this.totalDue = total;
             this.slotNumber = slot;
+            this.transactionId = txnId;
         }
+
+        // Constructor kosong backup (jangan buang)
+        public FormDriverPayment()
+        {
+            InitializeComponent();
+        }
+
+        // 3. Memaparkan maklumat data real-time pada Label UI semasa skrin dibuka
         private void FormDriverPayment_Load(object sender, EventArgs e)
         {
+            // Sila sesuaikan nama label bawah ni dengan nama label pada Design kau!
             labelOutputSlot.Text = slotNumber;
             labelDuration.Text = durationHours.ToString() + " Hours";
             labelOutputBF.Text = "RM " + baseFee.ToString("0.00");
@@ -44,64 +50,75 @@ namespace park_management
 
             buttonPay.Text = "Pay RM " + totalDue.ToString("0.00");
         }
-        public FormDriverPayment()
-        {
-            InitializeComponent();
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // 4. Event Handler untuk Pilihan Cara Pembayaran
         private void buttonCash_Click(object sender, EventArgs e)
         {
-            chosenMethod = "Cash"; MessageBox.Show("Payment method set to Cash");
+            chosenMethod = "Cash";
+            MessageBox.Show("Payment method set to Cash", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonCard_Click(object sender, EventArgs e)
         {
-            chosenMethod = "Card"; MessageBox.Show("Payment method set to Card");
+            chosenMethod = "Card";
+            MessageBox.Show("Payment method set to Card", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonOnline_Click(object sender, EventArgs e)
         {
-            chosenMethod = "Online"; MessageBox.Show("Payment method set to Online");
+            chosenMethod = "Online";
+            MessageBox.Show("Payment method set to Online", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // 5. BUTANG PROSES BAYAR (Klik Sahkan Pembayaran)
         private void buttonPay_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = "UPDATE ParkingSession SET Status = 'Paid', PaymentMethod = @method " +
-                               "WHERE LicensePlate = @plate AND Status = 'Pending'";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@method", chosenMethod);
-                    cmd.Parameters.AddWithValue("@plate", licensePlate);
+                    conn.Open();
 
-                    try
+                    // MASALAH REKOD: A. Masukkan rekod baru dalam table Payment kau
+                    // (Suaikan nama column: Payment_Method, Amount, Payment_Timestamp, Transaction_ID ikut DB kau)
+                    string insertPaymentQuery = "INSERT INTO Payment (Payment_Method, Amount, Payment_Timestamp, Transaction_ID) " +
+                                                "VALUES (@method, @amount, @timestamp, @txnId)";
+
+                    using (SqlCommand paymentCmd = new SqlCommand(insertPaymentQuery, conn))
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                        paymentCmd.Parameters.AddWithValue("@method", chosenMethod);
+                        paymentCmd.Parameters.AddWithValue("@amount", totalDue);
+                        paymentCmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
+                        paymentCmd.Parameters.AddWithValue("@txnId", transactionId);
+
+                        paymentCmd.ExecuteNonQuery();
                     }
-                    catch (Exception ex)
+
+                    // MASALAH UPDATE: B. Tukar status dalam table Parking_Transaction kepada 'Paid'
+                    // (Suaikan nama column status kalau kau guna nama lain contoh 'Status_Payment')
+                    string updateTxQuery = "UPDATE Parking_Transaction SET Status = 'Paid' WHERE Transaction_ID = @txnId";
+
+                    using (SqlCommand updateCmd = new SqlCommand(updateTxQuery, conn))
                     {
-                        MessageBox.Show("Database Error: " + ex.Message);
-                        return;
+                        updateCmd.Parameters.AddWithValue("@txnId", transactionId);
+                        updateCmd.ExecuteNonQuery();
                     }
+
+                    MessageBox.Show("Payment Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // C. Lepas settle bayar, hantar pemandu ke skrin Sesi Aktif (FormDriverSession)
+                    FormDriverSession sessionForm = new FormDriverSession(licensePlate);
+                    sessionForm.Show();
+                    this.Hide();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database Error during payment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            MessageBox.Show("Payment Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Buka skrin Sesi Aktif Pemandu
-            FormDriverSession sessionForm = new FormDriverSession(licensePlate);
-            sessionForm.Show();
-            this.Hide();
         }
 
+        // 6. Butang Back (Kalau user nak tukar duration balik)
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormDriverDuration durationForm = new FormDriverDuration(licensePlate);

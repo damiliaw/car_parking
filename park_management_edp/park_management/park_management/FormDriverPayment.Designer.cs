@@ -154,10 +154,9 @@
             this.labelPayParkingFee.Size = new System.Drawing.Size(135, 22);
             this.labelPayParkingFee.TabIndex = 18;
             this.labelPayParkingFee.Text = "Pay parking fee";
-            this.labelPayParkingFee.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelPlate
-            // 
+             
             this.labelPlate.AutoSize = true;
             this.labelPlate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPlate.Location = new System.Drawing.Point(20, 26);

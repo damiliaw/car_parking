@@ -1,4 +1,6 @@
-﻿namespace park_management
+﻿using System;
+
+namespace park_management
 {
     partial class FormDriverDuration
     {
@@ -46,6 +48,7 @@
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelRM = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelPlate
@@ -167,7 +170,7 @@
             this.labelTotalFee.AutoSize = true;
             this.labelTotalFee.BackColor = System.Drawing.Color.White;
             this.labelTotalFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalFee.Location = new System.Drawing.Point(605, 263);
+            this.labelTotalFee.Location = new System.Drawing.Point(563, 263);
             this.labelTotalFee.Name = "labelTotalFee";
             this.labelTotalFee.Size = new System.Drawing.Size(112, 18);
             this.labelTotalFee.TabIndex = 11;
@@ -179,7 +182,7 @@
             this.labelTotalHR.AutoSize = true;
             this.labelTotalHR.BackColor = System.Drawing.Color.White;
             this.labelTotalHR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalHR.Location = new System.Drawing.Point(605, 290);
+            this.labelTotalHR.Location = new System.Drawing.Point(563, 290);
             this.labelTotalHR.Name = "labelTotalHR";
             this.labelTotalHR.Size = new System.Drawing.Size(112, 18);
             this.labelTotalHR.TabIndex = 12;
@@ -243,12 +246,24 @@
             this.label4.Size = new System.Drawing.Size(708, 114);
             this.label4.TabIndex = 17;
             // 
+            // labelRM
+            // 
+            this.labelRM.AutoSize = true;
+            this.labelRM.BackColor = System.Drawing.Color.White;
+            this.labelRM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRM.Location = new System.Drawing.Point(562, 331);
+            this.labelRM.Name = "labelRM";
+            this.labelRM.Size = new System.Drawing.Size(37, 22);
+            this.labelRM.TabIndex = 18;
+            this.labelRM.Text = "RM";
+            // 
             // FormDriverDuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(203)))), ((int)(((byte)(177)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelRM);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.labelOutputTotalPay);
@@ -275,6 +290,22 @@
 
         }
 
+        private void labelTotalFee_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelTotalHR_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelTotalPay_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelOutputTotalPay_Click(object sender, EventArgs e)
+        {
+        }
+
         #endregion
 
         private System.Windows.Forms.Label labelPlate;
@@ -295,5 +326,6 @@
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelRM;
     }
 }

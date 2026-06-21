@@ -41,5 +41,14 @@ namespace Project_EDP
             LoginForm.Show();
             this.Hide();
         }
+
+        private void labelTitle_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void FormDriverLogin_Load(object sender, EventArgs e)
+        {
+            textBoxPlateNumber.Focus();
+        }
     }
 }
