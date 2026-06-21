@@ -19,7 +19,9 @@ namespace Project_EDP
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-
+            FormDriverLogin formDriverLogin = new FormDriverLogin();
+            formDriverLogin.Show();
+            this.Hide();
         }
 
         private void labelTItle_Click(object sender, EventArgs e)
