@@ -21,7 +21,7 @@ namespace Project_EDP
         {
             FormDriverLogin formDriverLogin = new FormDriverLogin();
             formDriverLogin.Show();
-            this.Hide();
+           // this.Hide();
         }
 
         private void labelTItle_Click(object sender, EventArgs e)
