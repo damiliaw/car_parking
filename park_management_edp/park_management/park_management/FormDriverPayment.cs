@@ -6,21 +6,18 @@ namespace park_management
 {
     public partial class FormDriverPayment : Form
     {
-        // 1. Alamat pautan database MDF laluan penuh PC kau
-        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\user\source\repos\carParkSystem\carParkSystem\CarParkDB.mdf;Integrated Security=True;";
-
-        // 2. Isytihar Variable Global
         private string licensePlate;
         private int durationHours;
         private double baseFee;
         private double hourlyCharge;
         private double totalDue;
         private string slotNumber;
-        private int transactionId;
-        private string chosenMethod = "Cash"; // Default method jika user tak tekan butang lain
+        private string transactionId;
+        private string selectedMethod = "Cash";
 
-        // CONSTRUCTOR UTAMA: Menyambut 7 data tepat dari Form Duration
-        public FormDriverPayment(string plate, int hours, double bFee, double hCharge, double total, string slot, int txnId)
+        private string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CarParkDB.mdf;Integrated Security=True;";
+
+        public FormDriverPayment(string plate, int hours, double bFee, double hCharge, double total, string slot, string txnId)
         {
             InitializeComponent();
             this.licensePlate = plate;
@@ -32,98 +29,128 @@ namespace park_management
             this.transactionId = txnId;
         }
 
-        // Constructor kosong backup (jangan buang)
         public FormDriverPayment()
         {
             InitializeComponent();
         }
 
-        // 3. Memaparkan maklumat data real-time pada Label UI semasa skrin dibuka
         private void FormDriverPayment_Load(object sender, EventArgs e)
         {
-            // Sila sesuaikan nama label bawah ni dengan nama label pada Design kau!
             labelOutputSlot.Text = slotNumber;
             labelDuration.Text = durationHours.ToString() + " Hours";
             labelOutputBF.Text = "RM " + baseFee.ToString("0.00");
             labelOutputHC.Text = "RM " + hourlyCharge.ToString("0.00");
             labelOutputTotalDue.Text = "RM " + totalDue.ToString("0.00");
-
             buttonPay.Text = "Pay RM " + totalDue.ToString("0.00");
         }
 
-        // 4. Event Handler untuk Pilihan Cara Pembayaran
+        // Pilih method — tunjuk message je
         private void buttonCash_Click(object sender, EventArgs e)
         {
-            chosenMethod = "Cash";
-            MessageBox.Show("Payment method set to Cash", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            selectedMethod = "Cash";
+            MessageBox.Show("Payment set to Cash!", "Payment Method", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonCard_Click(object sender, EventArgs e)
         {
-            chosenMethod = "Card";
-            MessageBox.Show("Payment method set to Card", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            selectedMethod = "Card";
+            MessageBox.Show("Payment set to Card!", "Payment Method", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonOnline_Click(object sender, EventArgs e)
         {
-            chosenMethod = "Online";
-            MessageBox.Show("Payment method set to Online", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            selectedMethod = "Online";
+            MessageBox.Show("Payment set to Online!", "Payment Method", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // 5. BUTANG PROSES BAYAR (Klik Sahkan Pembayaran)
+        // Urusan bank — tak buat apa
         private void buttonPay_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            MessageBox.Show("Payment done! Please proceed to view your receipt.", "Payment Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // Receipt — update DB dan show receipt
+        private void buttonReceipt_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(connString))
                 {
                     conn.Open();
 
-                    // MASALAH REKOD: A. Masukkan rekod baru dalam table Payment kau
-                    // (Suaikan nama column: Payment_Method, Amount, Payment_Timestamp, Transaction_ID ikut DB kau)
-                    string insertPaymentQuery = "INSERT INTO Payment (Payment_Method, Amount, Payment_Timestamp, Transaction_ID) " +
-                                                "VALUES (@method, @amount, @timestamp, @txnId)";
-
-                    using (SqlCommand paymentCmd = new SqlCommand(insertPaymentQuery, conn))
+                    // Jana Payment ID
+                    string newPaymentID = "PY-001";
+                    using (SqlCommand cmd = new SqlCommand("SELECT TOP 1 Payment_ID FROM Payment ORDER BY Payment_ID DESC", conn))
                     {
-                        paymentCmd.Parameters.AddWithValue("@method", chosenMethod);
-                        paymentCmd.Parameters.AddWithValue("@amount", totalDue);
-                        paymentCmd.Parameters.AddWithValue("@timestamp", DateTime.Now);
-                        paymentCmd.Parameters.AddWithValue("@txnId", transactionId);
-
-                        paymentCmd.ExecuteNonQuery();
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            string lastId = result.ToString();
+                            int lastNum = int.Parse(lastId.Replace("PY-", ""));
+                            newPaymentID = $"PY-{(lastNum + 1):D3}";
+                        }
                     }
 
-                    // MASALAH UPDATE: B. Tukar status dalam table Parking_Transaction kepada 'Paid'
-                    // (Suaikan nama column status kalau kau guna nama lain contoh 'Status_Payment')
-                    string updateTxQuery = "UPDATE Parking_Transaction SET Status = 'Paid' WHERE Transaction_ID = @txnId";
-
-                    using (SqlCommand updateCmd = new SqlCommand(updateTxQuery, conn))
+                    // Insert Payment
+                    using (SqlCommand cmd = new SqlCommand(
+                        @"INSERT INTO Payment (Payment_ID, Payment_Method, Payment_Status, Amount_Paid, Transaction_ID) 
+                          VALUES (@PayID, @Method, 'Paid', @Amount, @TxID)", conn))
                     {
-                        updateCmd.Parameters.AddWithValue("@txnId", transactionId);
-                        updateCmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@PayID", newPaymentID);
+                        cmd.Parameters.AddWithValue("@Method", selectedMethod);
+                        cmd.Parameters.AddWithValue("@Amount", totalDue);
+                        cmd.Parameters.AddWithValue("@TxID", transactionId);
+                        cmd.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Payment Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Update Exit Timestamp
+                    using (SqlCommand cmd = new SqlCommand(
+                        "UPDATE Parking_Transaction SET Exit_Timestamp = @Exit WHERE Transaction_ID = @TxID", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Exit", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@TxID", transactionId);
+                        cmd.ExecuteNonQuery();
+                    }
 
-                    // C. Lepas settle bayar, hantar pemandu ke skrin Sesi Aktif (FormDriverSession)
-                    FormDriverSession sessionForm = new FormDriverSession(licensePlate);
-                    sessionForm.Show();
-                    this.Hide();
+                    // Free slot
+                    using (SqlCommand cmd = new SqlCommand(
+                        "UPDATE Parking_Slot SET Status = 'Available' WHERE Slot_Number = @SlotNum", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SlotNum", slotNumber);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Database Error during payment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                // Tunjuk receipt
+                MessageBox.Show(
+                    $"===== RECEIPT =====\n" +
+                    $"Transaction : {transactionId}\n" +
+                    $"Slot        : {slotNumber}\n" +
+                    $"Duration    : {durationHours} Hour(s)\n" +
+                    $"Base Fee    : RM {baseFee:0.00}\n" +
+                    $"Hourly      : RM {hourlyCharge:0.00}\n" +
+                    $"Total Paid  : RM {totalDue:0.00}\n" +
+                    $"Method      : {selectedMethod}\n" +
+                    $"===================",
+                    "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Balik Form1
+                CarParkManagementSystem.Form1 mainForm = new CarParkManagementSystem.Form1();
+                mainForm.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // 6. Butang Back (Kalau user nak tukar duration balik)
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormDriverDuration durationForm = new FormDriverDuration(licensePlate);
-            durationForm.Show();
-            this.Close();
+            FormDriverSession sessionForm = new FormDriverSession(
+                licensePlate, transactionId, slotNumber, durationHours, baseFee, hourlyCharge);
+            sessionForm.Show();
+            this.Hide();
         }
     }
 }

@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.buttonReceipt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -82,7 +83,7 @@
             this.labelOutputTotalDue.AutoSize = true;
             this.labelOutputTotalDue.BackColor = System.Drawing.Color.White;
             this.labelOutputTotalDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutputTotalDue.Location = new System.Drawing.Point(620, 214);
+            this.labelOutputTotalDue.Location = new System.Drawing.Point(529, 214);
             this.labelOutputTotalDue.Name = "labelOutputTotalDue";
             this.labelOutputTotalDue.Size = new System.Drawing.Size(144, 22);
             this.labelOutputTotalDue.TabIndex = 31;
@@ -104,7 +105,7 @@
             this.labelDuration.AutoSize = true;
             this.labelDuration.BackColor = System.Drawing.Color.White;
             this.labelDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDuration.Location = new System.Drawing.Point(621, 131);
+            this.labelDuration.Location = new System.Drawing.Point(528, 131);
             this.labelDuration.Name = "labelDuration";
             this.labelDuration.Size = new System.Drawing.Size(109, 18);
             this.labelDuration.TabIndex = 29;
@@ -115,7 +116,7 @@
             this.labelOutputSlot.AutoSize = true;
             this.labelOutputSlot.BackColor = System.Drawing.Color.White;
             this.labelOutputSlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutputSlot.Location = new System.Drawing.Point(621, 104);
+            this.labelOutputSlot.Location = new System.Drawing.Point(528, 104);
             this.labelOutputSlot.Name = "labelOutputSlot";
             this.labelOutputSlot.Size = new System.Drawing.Size(79, 18);
             this.labelOutputSlot.TabIndex = 28;
@@ -156,7 +157,7 @@
             this.labelPayParkingFee.Text = "Pay parking fee";
             // 
             // labelPlate
-             
+            // 
             this.labelPlate.AutoSize = true;
             this.labelPlate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPlate.Location = new System.Drawing.Point(20, 26);
@@ -216,7 +217,7 @@
             this.labelOutputHC.AutoSize = true;
             this.labelOutputHC.BackColor = System.Drawing.Color.White;
             this.labelOutputHC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutputHC.Location = new System.Drawing.Point(621, 185);
+            this.labelOutputHC.Location = new System.Drawing.Point(528, 185);
             this.labelOutputHC.Name = "labelOutputHC";
             this.labelOutputHC.Size = new System.Drawing.Size(145, 18);
             this.labelOutputHC.TabIndex = 37;
@@ -227,7 +228,7 @@
             this.labelOutputBF.AutoSize = true;
             this.labelOutputBF.BackColor = System.Drawing.Color.White;
             this.labelOutputBF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutputBF.Location = new System.Drawing.Point(621, 158);
+            this.labelOutputBF.Location = new System.Drawing.Point(528, 158);
             this.labelOutputBF.Name = "labelOutputBF";
             this.labelOutputBF.Size = new System.Drawing.Size(111, 18);
             this.labelOutputBF.TabIndex = 36;
@@ -259,7 +260,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(262, 418);
+            this.label1.Location = new System.Drawing.Point(265, 496);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(277, 18);
             this.label1.TabIndex = 38;
@@ -289,12 +290,24 @@
             this.label5.Size = new System.Drawing.Size(756, 38);
             this.label5.TabIndex = 41;
             // 
+            // buttonReceipt
+            // 
+            this.buttonReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReceipt.Location = new System.Drawing.Point(172, 421);
+            this.buttonReceipt.Name = "buttonReceipt";
+            this.buttonReceipt.Size = new System.Drawing.Size(442, 47);
+            this.buttonReceipt.TabIndex = 42;
+            this.buttonReceipt.Text = "View Receipt";
+            this.buttonReceipt.UseVisualStyleBackColor = true;
+            this.buttonReceipt.Click += new System.EventHandler(this.buttonReceipt_Click);
+            // 
             // FormDriverPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(203)))), ((int)(((byte)(177)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 523);
+            this.Controls.Add(this.buttonReceipt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelOutputHC);
             this.Controls.Add(this.labelOutputBF);
@@ -349,5 +362,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonReceipt;
     }
 }

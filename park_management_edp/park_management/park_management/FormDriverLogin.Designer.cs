@@ -74,9 +74,9 @@ namespace Project_EDP
             this.labelPlateNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPlateNumber.Location = new System.Drawing.Point(292, 154);
             this.labelPlateNumber.Name = "labelPlateNumber";
-            this.labelPlateNumber.Size = new System.Drawing.Size(181, 22);
+            this.labelPlateNumber.Size = new System.Drawing.Size(155, 22);
             this.labelPlateNumber.TabIndex = 2;
-            this.labelPlateNumber.Text = "License plate number";
+            this.labelPlateNumber.Text = "License plate num";
             // 
             // label1
             // 

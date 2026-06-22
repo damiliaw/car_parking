@@ -48,8 +48,7 @@
             this.labelRateOutput = new System.Windows.Forms.Label();
             this.labelStatusOuput = new System.Windows.Forms.Label();
             this.buttonChangeDuration = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonPayNow = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -63,7 +62,7 @@
             this.labelNoPlate.Size = new System.Drawing.Size(110, 22);
             this.labelNoPlate.TabIndex = 0;
             this.labelNoPlate.Text = "license plate\r\n";
-            this.labelNoPlate.Click += new System.EventHandler(this.labelNoPlate_Click);
+            this.labelNoPlate.Click += new System.EventHandler(this.labelPlate_Click);
             // 
             // labelColorModel
             // 
@@ -82,8 +81,9 @@
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 30);
             this.buttonExit.TabIndex = 2;
-            this.buttonExit.Text = "Exit";
+            this.buttonExit.Text = "Back";
             this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click_1);
             // 
             // labelSlot
             // 
@@ -217,7 +217,7 @@
             this.labelTransactionOutput.AutoSize = true;
             this.labelTransactionOutput.BackColor = System.Drawing.Color.White;
             this.labelTransactionOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTransactionOutput.Location = new System.Drawing.Point(615, 145);
+            this.labelTransactionOutput.Location = new System.Drawing.Point(547, 145);
             this.labelTransactionOutput.Name = "labelTransactionOutput";
             this.labelTransactionOutput.Size = new System.Drawing.Size(152, 20);
             this.labelTransactionOutput.TabIndex = 15;
@@ -228,7 +228,7 @@
             this.labelEntryTImeOutput.AutoSize = true;
             this.labelEntryTImeOutput.BackColor = System.Drawing.Color.White;
             this.labelEntryTImeOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEntryTImeOutput.Location = new System.Drawing.Point(615, 179);
+            this.labelEntryTImeOutput.Location = new System.Drawing.Point(547, 179);
             this.labelEntryTImeOutput.Name = "labelEntryTImeOutput";
             this.labelEntryTImeOutput.Size = new System.Drawing.Size(103, 20);
             this.labelEntryTImeOutput.TabIndex = 16;
@@ -239,7 +239,7 @@
             this.labelDurationChosenOutput.AutoSize = true;
             this.labelDurationChosenOutput.BackColor = System.Drawing.Color.White;
             this.labelDurationChosenOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDurationChosenOutput.Location = new System.Drawing.Point(615, 211);
+            this.labelDurationChosenOutput.Location = new System.Drawing.Point(547, 211);
             this.labelDurationChosenOutput.Name = "labelDurationChosenOutput";
             this.labelDurationChosenOutput.Size = new System.Drawing.Size(128, 20);
             this.labelDurationChosenOutput.TabIndex = 17;
@@ -250,7 +250,7 @@
             this.labelRateOutput.AutoSize = true;
             this.labelRateOutput.BackColor = System.Drawing.Color.White;
             this.labelRateOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRateOutput.Location = new System.Drawing.Point(615, 246);
+            this.labelRateOutput.Location = new System.Drawing.Point(551, 246);
             this.labelRateOutput.Name = "labelRateOutput";
             this.labelRateOutput.Size = new System.Drawing.Size(99, 20);
             this.labelRateOutput.TabIndex = 18;
@@ -261,7 +261,7 @@
             this.labelStatusOuput.AutoSize = true;
             this.labelStatusOuput.BackColor = System.Drawing.Color.White;
             this.labelStatusOuput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatusOuput.Location = new System.Drawing.Point(615, 284);
+            this.labelStatusOuput.Location = new System.Drawing.Point(551, 284);
             this.labelStatusOuput.Name = "labelStatusOuput";
             this.labelStatusOuput.Size = new System.Drawing.Size(112, 20);
             this.labelStatusOuput.TabIndex = 19;
@@ -272,7 +272,7 @@
             this.buttonChangeDuration.BackColor = System.Drawing.Color.Green;
             this.buttonChangeDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChangeDuration.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonChangeDuration.Location = new System.Drawing.Point(174, 338);
+            this.buttonChangeDuration.Location = new System.Drawing.Point(157, 338);
             this.buttonChangeDuration.Name = "buttonChangeDuration";
             this.buttonChangeDuration.Size = new System.Drawing.Size(218, 47);
             this.buttonChangeDuration.TabIndex = 20;
@@ -280,27 +280,18 @@
             this.buttonChangeDuration.UseVisualStyleBackColor = false;
             this.buttonChangeDuration.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonPayNow
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(398, 338);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 47);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Pay Now";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(174, 391);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(442, 47);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "View Receipt";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonPayNow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.buttonPayNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPayNow.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonPayNow.Location = new System.Drawing.Point(398, 338);
+            this.buttonPayNow.Name = "buttonPayNow";
+            this.buttonPayNow.Size = new System.Drawing.Size(218, 47);
+            this.buttonPayNow.TabIndex = 21;
+            this.buttonPayNow.Text = "Pay Now";
+            this.buttonPayNow.UseVisualStyleBackColor = false;
+            this.buttonPayNow.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -323,9 +314,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(203)))), ((int)(((byte)(177)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.buttonPayNow);
             this.Controls.Add(this.buttonChangeDuration);
             this.Controls.Add(this.labelStatusOuput);
             this.Controls.Add(this.labelRateOutput);
@@ -378,8 +368,7 @@
         private System.Windows.Forms.Label labelRateOutput;
         private System.Windows.Forms.Label labelStatusOuput;
         private System.Windows.Forms.Button buttonChangeDuration;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonPayNow;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
