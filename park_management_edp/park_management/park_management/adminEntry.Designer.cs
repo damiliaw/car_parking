@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.refreshBttn = new System.Windows.Forms.Button();
+            this.txtNoPlate = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -46,15 +48,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dgvPreview = new System.Windows.Forms.DataGridView();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.cmbRate = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.numHourlyRate = new System.Windows.Forms.NumericUpDown();
-            this.cmbSlot = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtRateID = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.linkLogOut = new System.Windows.Forms.LinkLabel();
@@ -65,11 +63,11 @@
             this.RateBttn = new System.Windows.Forms.Button();
             this.vehicleBttn = new System.Windows.Forms.Button();
             this.parkSlotbttn = new System.Windows.Forms.Button();
+            this.availableSlot = new System.Windows.Forms.ComboBox();
+            this.rateApplied = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHourlyRate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbSlot)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +75,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(184)))), ((int)(((byte)(148)))));
+            this.panel2.Controls.Add(this.rateApplied);
+            this.panel2.Controls.Add(this.availableSlot);
+            this.panel2.Controls.Add(this.refreshBttn);
+            this.panel2.Controls.Add(this.txtNoPlate);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
@@ -94,18 +96,32 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.dgvPreview);
             this.panel2.Controls.Add(this.btnConfirm);
-            this.panel2.Controls.Add(this.btnClear);
             this.panel2.Controls.Add(this.cmbRate);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.numHourlyRate);
-            this.panel2.Controls.Add(this.cmbSlot);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtRateID);
             this.panel2.Location = new System.Drawing.Point(180, 27);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(698, 506);
             this.panel2.TabIndex = 11;
+            // 
+            // refreshBttn
+            // 
+            this.refreshBttn.Location = new System.Drawing.Point(561, 385);
+            this.refreshBttn.Name = "refreshBttn";
+            this.refreshBttn.Size = new System.Drawing.Size(91, 37);
+            this.refreshBttn.TabIndex = 41;
+            this.refreshBttn.Text = "Refresh";
+            this.refreshBttn.UseVisualStyleBackColor = true;
+            this.refreshBttn.Click += new System.EventHandler(this.refreshBttn_Click);
+            // 
+            // txtNoPlate
+            // 
+            this.txtNoPlate.Location = new System.Drawing.Point(28, 155);
+            this.txtNoPlate.Name = "txtNoPlate";
+            this.txtNoPlate.Size = new System.Drawing.Size(107, 22);
+            this.txtNoPlate.TabIndex = 40;
+            this.txtNoPlate.TextChanged += new System.EventHandler(this.txtNoPlate_TextChanged_1);
             // 
             // label14
             // 
@@ -133,7 +149,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(208, 410);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 16);
+            this.label10.Size = new System.Drawing.Size(96, 15);
             this.label10.TabIndex = 37;
             this.label10.Text = "Entry time (auto)";
             // 
@@ -143,6 +159,7 @@
             this.txtBoxEntryAuto.Name = "txtBoxEntryAuto";
             this.txtBoxEntryAuto.Size = new System.Drawing.Size(100, 22);
             this.txtBoxEntryAuto.TabIndex = 36;
+            this.txtBoxEntryAuto.TextChanged += new System.EventHandler(this.txtBoxEntryAuto_TextChanged);
             // 
             // txtBoxDuration
             // 
@@ -150,6 +167,7 @@
             this.txtBoxDuration.Name = "txtBoxDuration";
             this.txtBoxDuration.Size = new System.Drawing.Size(100, 22);
             this.txtBoxDuration.TabIndex = 35;
+            this.txtBoxDuration.TextChanged += new System.EventHandler(this.txtBoxDuration_TextChanged);
             // 
             // label9
             // 
@@ -194,6 +212,7 @@
             this.txtBoxVehicleType.Name = "txtBoxVehicleType";
             this.txtBoxVehicleType.Size = new System.Drawing.Size(119, 22);
             this.txtBoxVehicleType.TabIndex = 30;
+            this.txtBoxVehicleType.TextChanged += new System.EventHandler(this.txtBoxVehicleType_TextChanged);
             // 
             // txtVehicleID
             // 
@@ -201,6 +220,7 @@
             this.txtVehicleID.Name = "txtVehicleID";
             this.txtVehicleID.Size = new System.Drawing.Size(105, 22);
             this.txtVehicleID.TabIndex = 29;
+            this.txtVehicleID.TextChanged += new System.EventHandler(this.txtVehicleID_TextChanged);
             // 
             // btnLookup
             // 
@@ -211,6 +231,7 @@
             this.btnLookup.TabIndex = 9;
             this.btnLookup.Text = "Look up";
             this.btnLookup.UseVisualStyleBackColor = true;
+            this.btnLookup.Click += new System.EventHandler(this.btnLookup_Click);
             // 
             // label7
             // 
@@ -238,6 +259,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(271, 107);
             this.dataGridView1.TabIndex = 27;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label6
             // 
@@ -264,6 +286,7 @@
             this.dgvPreview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPreview.Size = new System.Drawing.Size(271, 100);
             this.dgvPreview.TabIndex = 25;
+            this.dgvPreview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPreview_CellContentClick);
             // 
             // btnConfirm
             // 
@@ -273,15 +296,7 @@
             this.btnConfirm.TabIndex = 24;
             this.btnConfirm.Text = "✓ Confirm Entry";
             this.btnConfirm.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(559, 385);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(87, 37);
-            this.btnClear.TabIndex = 23;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // cmbRate
             // 
@@ -300,20 +315,6 @@
             this.label4.Size = new System.Drawing.Size(93, 16);
             this.label4.TabIndex = 20;
             this.label4.Text = "Available Slot ";
-            // 
-            // numHourlyRate
-            // 
-            this.numHourlyRate.Location = new System.Drawing.Point(28, 370);
-            this.numHourlyRate.Name = "numHourlyRate";
-            this.numHourlyRate.Size = new System.Drawing.Size(283, 22);
-            this.numHourlyRate.TabIndex = 19;
-            // 
-            // cmbSlot
-            // 
-            this.cmbSlot.Location = new System.Drawing.Point(28, 314);
-            this.cmbSlot.Name = "cmbSlot";
-            this.cmbSlot.Size = new System.Drawing.Size(283, 22);
-            this.cmbSlot.TabIndex = 18;
             // 
             // panel3
             // 
@@ -343,13 +344,6 @@
             this.label2.Size = new System.Drawing.Size(93, 16);
             this.label2.TabIndex = 14;
             this.label2.Text = "License Plate*";
-            // 
-            // txtRateID
-            // 
-            this.txtRateID.Location = new System.Drawing.Point(28, 155);
-            this.txtRateID.Name = "txtRateID";
-            this.txtRateID.Size = new System.Drawing.Size(152, 22);
-            this.txtRateID.TabIndex = 13;
             // 
             // panel1
             // 
@@ -389,6 +383,7 @@
             this.linkLogOut.TabIndex = 8;
             this.linkLogOut.TabStop = true;
             this.linkLogOut.Text = "Log Out";
+            this.linkLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLogOut_LinkClicked);
             // 
             // label13
             // 
@@ -409,6 +404,7 @@
             this.dashboardBttn.TabIndex = 7;
             this.dashboardBttn.Text = "Dashboard";
             this.dashboardBttn.UseVisualStyleBackColor = true;
+            this.dashboardBttn.Click += new System.EventHandler(this.dashboardBttn_Click);
             // 
             // TranscBttn
             // 
@@ -419,6 +415,7 @@
             this.TranscBttn.TabIndex = 4;
             this.TranscBttn.Text = "Transaction";
             this.TranscBttn.UseVisualStyleBackColor = true;
+            this.TranscBttn.Click += new System.EventHandler(this.TranscBttn_Click);
             // 
             // EntryBttn
             // 
@@ -429,6 +426,7 @@
             this.EntryBttn.TabIndex = 3;
             this.EntryBttn.Text = "Entry";
             this.EntryBttn.UseVisualStyleBackColor = true;
+            this.EntryBttn.Click += new System.EventHandler(this.EntryBttn_Click);
             // 
             // RateBttn
             // 
@@ -439,6 +437,7 @@
             this.RateBttn.TabIndex = 2;
             this.RateBttn.Text = "Rate";
             this.RateBttn.UseVisualStyleBackColor = true;
+            this.RateBttn.Click += new System.EventHandler(this.RateBttn_Click);
             // 
             // vehicleBttn
             // 
@@ -449,6 +448,7 @@
             this.vehicleBttn.TabIndex = 1;
             this.vehicleBttn.Text = "Vehicle";
             this.vehicleBttn.UseVisualStyleBackColor = true;
+            this.vehicleBttn.Click += new System.EventHandler(this.vehicleBttn_Click);
             // 
             // parkSlotbttn
             // 
@@ -459,6 +459,25 @@
             this.parkSlotbttn.TabIndex = 0;
             this.parkSlotbttn.Text = "Parking Slot";
             this.parkSlotbttn.UseVisualStyleBackColor = true;
+            this.parkSlotbttn.Click += new System.EventHandler(this.parkSlotbttn_Click);
+            // 
+            // availableSlot
+            // 
+            this.availableSlot.FormattingEnabled = true;
+            this.availableSlot.Location = new System.Drawing.Point(28, 314);
+            this.availableSlot.Name = "availableSlot";
+            this.availableSlot.Size = new System.Drawing.Size(247, 24);
+            this.availableSlot.TabIndex = 42;
+            this.availableSlot.SelectedIndexChanged += new System.EventHandler(this.availableSlot_SelectedIndexChanged);
+            // 
+            // rateApplied
+            // 
+            this.rateApplied.FormattingEnabled = true;
+            this.rateApplied.Location = new System.Drawing.Point(30, 374);
+            this.rateApplied.Name = "rateApplied";
+            this.rateApplied.Size = new System.Drawing.Size(247, 24);
+            this.rateApplied.TabIndex = 43;
+            this.rateApplied.SelectedIndexChanged += new System.EventHandler(this.rateApplied_SelectedIndexChanged);
             // 
             // adminEntry
             // 
@@ -474,8 +493,6 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHourlyRate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbSlot)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -490,15 +507,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvPreview;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label cmbRate;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numHourlyRate;
-        private System.Windows.Forms.NumericUpDown cmbSlot;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtRateID;
         private System.Windows.Forms.Button btnLookup;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
@@ -522,5 +535,9 @@
         private System.Windows.Forms.Button vehicleBttn;
         private System.Windows.Forms.Button parkSlotbttn;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtNoPlate;
+        private System.Windows.Forms.Button refreshBttn;
+        private System.Windows.Forms.ComboBox rateApplied;
+        private System.Windows.Forms.ComboBox availableSlot;
     }
 }

@@ -111,6 +111,7 @@
             this.btnSearch.TabIndex = 24;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label6
             // 
@@ -127,6 +128,7 @@
             this.txtSearchPlate.Name = "txtSearchPlate";
             this.txtSearchPlate.Size = new System.Drawing.Size(147, 22);
             this.txtSearchPlate.TabIndex = 22;
+            this.txtSearchPlate.TextChanged += new System.EventHandler(this.txtSearchPlate_TextChanged);
             // 
             // label5
             // 
@@ -146,6 +148,7 @@
             this.dgvVehicles.RowTemplate.Height = 24;
             this.dgvVehicles.Size = new System.Drawing.Size(240, 173);
             this.dgvVehicles.TabIndex = 20;
+            this.dgvVehicles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicles_CellContentClick);
             // 
             // btnDelete
             // 
@@ -155,6 +158,7 @@
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
@@ -164,6 +168,7 @@
             this.btnClear.TabIndex = 18;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnRegister
             // 
@@ -173,6 +178,7 @@
             this.btnRegister.TabIndex = 17;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // label4
             // 
@@ -189,6 +195,7 @@
             this.txtColorModel.Name = "txtColorModel";
             this.txtColorModel.Size = new System.Drawing.Size(318, 22);
             this.txtColorModel.TabIndex = 15;
+            this.txtColorModel.TextChanged += new System.EventHandler(this.txtColorModel_TextChanged);
             // 
             // label3
             // 
@@ -206,6 +213,7 @@
             this.cmbVehicleType.Name = "cmbVehicleType";
             this.cmbVehicleType.Size = new System.Drawing.Size(318, 24);
             this.cmbVehicleType.TabIndex = 13;
+            this.cmbVehicleType.SelectedIndexChanged += new System.EventHandler(this.cmbVehicleType_SelectedIndexChanged);
             // 
             // txtNoPlate
             // 
@@ -213,6 +221,7 @@
             this.txtNoPlate.Name = "txtNoPlate";
             this.txtNoPlate.Size = new System.Drawing.Size(127, 22);
             this.txtNoPlate.TabIndex = 12;
+            this.txtNoPlate.TextChanged += new System.EventHandler(this.txtNoPlate_TextChanged);
             // 
             // txtPlate
             // 
@@ -238,6 +247,7 @@
             this.txtVehicleID.Name = "txtVehicleID";
             this.txtVehicleID.Size = new System.Drawing.Size(125, 22);
             this.txtVehicleID.TabIndex = 9;
+            this.txtVehicleID.TextChanged += new System.EventHandler(this.txtVehicleID_TextChanged);
             // 
             // panel3
             // 
@@ -297,6 +307,7 @@
             this.linkLogOut.TabIndex = 8;
             this.linkLogOut.TabStop = true;
             this.linkLogOut.Text = "Log Out";
+            this.linkLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLogOut_LinkClicked);
             // 
             // label8
             // 
@@ -317,6 +328,7 @@
             this.dashboardBttn.TabIndex = 7;
             this.dashboardBttn.Text = "Dashboard";
             this.dashboardBttn.UseVisualStyleBackColor = true;
+            this.dashboardBttn.Click += new System.EventHandler(this.dashboardBttn_Click);
             // 
             // TranscBttn
             // 
@@ -327,6 +339,7 @@
             this.TranscBttn.TabIndex = 4;
             this.TranscBttn.Text = "Transaction";
             this.TranscBttn.UseVisualStyleBackColor = true;
+            this.TranscBttn.Click += new System.EventHandler(this.TranscBttn_Click);
             // 
             // EntryBttn
             // 
@@ -337,6 +350,7 @@
             this.EntryBttn.TabIndex = 3;
             this.EntryBttn.Text = "Entry";
             this.EntryBttn.UseVisualStyleBackColor = true;
+            this.EntryBttn.Click += new System.EventHandler(this.EntryBttn_Click);
             // 
             // RateBttn
             // 
@@ -347,6 +361,7 @@
             this.RateBttn.TabIndex = 2;
             this.RateBttn.Text = "Rate";
             this.RateBttn.UseVisualStyleBackColor = true;
+            this.RateBttn.Click += new System.EventHandler(this.RateBttn_Click);
             // 
             // vehicleBttn
             // 
@@ -357,6 +372,7 @@
             this.vehicleBttn.TabIndex = 1;
             this.vehicleBttn.Text = "Vehicle";
             this.vehicleBttn.UseVisualStyleBackColor = true;
+            this.vehicleBttn.Click += new System.EventHandler(this.vehicleBttn_Click);
             // 
             // parkSlotbttn
             // 
@@ -367,6 +383,7 @@
             this.parkSlotbttn.TabIndex = 0;
             this.parkSlotbttn.Text = "Parking Slot";
             this.parkSlotbttn.UseVisualStyleBackColor = true;
+            this.parkSlotbttn.Click += new System.EventHandler(this.parkSlotbttn_Click);
             // 
             // adminDashboard
             // 

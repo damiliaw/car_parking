@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.layoutRecentTransactions = new System.Windows.Forms.TableLayoutPanel();
-            this.layoutSlotMap = new System.Windows.Forms.TableLayoutPanel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblAvailable = new System.Windows.Forms.Label();
@@ -46,16 +47,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLogOut = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dashboardBttn = new System.Windows.Forms.Button();
+            this.TranscBttn = new System.Windows.Forms.Button();
+            this.EntryBttn = new System.Windows.Forms.Button();
+            this.RateBttn = new System.Windows.Forms.Button();
+            this.vehicleBttn = new System.Windows.Forms.Button();
+            this.parkSlotBttn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -67,11 +68,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(184)))), ((int)(((byte)(148)))));
+            this.panel2.Controls.Add(this.chart1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.layoutRecentTransactions);
-            this.panel2.Controls.Add(this.layoutSlotMap);
             this.panel2.Controls.Add(this.progressBar1);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
@@ -83,58 +81,33 @@
             this.panel2.Size = new System.Drawing.Size(584, 463);
             this.panel2.TabIndex = 9;
             // 
-            // label6
+            // chart1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(234, 249);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 16);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Recent Transactions";
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(8, 252);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Vehicle";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(554, 186);
+            this.chart1.TabIndex = 17;
+            this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 249);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(166, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Slot map - Ground floor";
-            // 
-            // layoutRecentTransactions
-            // 
-            this.layoutRecentTransactions.ColumnCount = 1;
-            this.layoutRecentTransactions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.03311F));
-            this.layoutRecentTransactions.Location = new System.Drawing.Point(237, 268);
-            this.layoutRecentTransactions.Name = "layoutRecentTransactions";
-            this.layoutRecentTransactions.RowCount = 6;
-            this.layoutRecentTransactions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.31579F));
-            this.layoutRecentTransactions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.68421F));
-            this.layoutRecentTransactions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.layoutRecentTransactions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutRecentTransactions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.layoutRecentTransactions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.layoutRecentTransactions.Size = new System.Drawing.Size(325, 169);
-            this.layoutRecentTransactions.TabIndex = 14;
-            // 
-            // layoutSlotMap
-            // 
-            this.layoutSlotMap.ColumnCount = 4;
-            this.layoutSlotMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.15385F));
-            this.layoutSlotMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.84615F));
-            this.layoutSlotMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.layoutSlotMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.layoutSlotMap.Location = new System.Drawing.Point(18, 268);
-            this.layoutSlotMap.Name = "layoutSlotMap";
-            this.layoutSlotMap.RowCount = 4;
-            this.layoutSlotMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.layoutSlotMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutSlotMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutSlotMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.layoutSlotMap.Size = new System.Drawing.Size(204, 138);
-            this.layoutSlotMap.TabIndex = 13;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(22, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 21);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Dasboard";
             // 
             // progressBar1
             // 
@@ -163,6 +136,7 @@
             this.lblAvailable.Size = new System.Drawing.Size(30, 32);
             this.lblAvailable.TabIndex = 15;
             this.lblAvailable.Text = "0";
+            this.lblAvailable.Click += new System.EventHandler(this.lblAvailable_Click);
             // 
             // groupBox2
             // 
@@ -174,6 +148,7 @@
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Occupied";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblOccupied
             // 
@@ -184,6 +159,7 @@
             this.lblOccupied.Size = new System.Drawing.Size(30, 32);
             this.lblOccupied.TabIndex = 16;
             this.lblOccupied.Text = "0";
+            this.lblOccupied.Click += new System.EventHandler(this.lblOccupied_Click);
             // 
             // groupBox4
             // 
@@ -191,7 +167,7 @@
             this.groupBox4.Controls.Add(this.lblRevenue);
             this.groupBox4.Location = new System.Drawing.Point(415, 111);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(109, 94);
+            this.groupBox4.Size = new System.Drawing.Size(147, 94);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Revenue today";
@@ -205,6 +181,7 @@
             this.lblRevenue.Size = new System.Drawing.Size(69, 29);
             this.lblRevenue.TabIndex = 14;
             this.lblRevenue.Text = "RM 0";
+            this.lblRevenue.Click += new System.EventHandler(this.lblRevenue_Click);
             // 
             // groupBox1
             // 
@@ -226,6 +203,7 @@
             this.lblTotalSlots.Size = new System.Drawing.Size(30, 32);
             this.lblTotalSlots.TabIndex = 13;
             this.lblTotalSlots.Text = "0";
+            this.lblTotalSlots.Click += new System.EventHandler(this.lblTotalSlots_Click);
             // 
             // panel3
             // 
@@ -251,14 +229,14 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(184)))), ((int)(((byte)(148)))));
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.linkLabel1);
+            this.panel4.Controls.Add(this.linkLogOut);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.button4);
-            this.panel4.Controls.Add(this.button5);
-            this.panel4.Controls.Add(this.button6);
+            this.panel4.Controls.Add(this.dashboardBttn);
+            this.panel4.Controls.Add(this.TranscBttn);
+            this.panel4.Controls.Add(this.EntryBttn);
+            this.panel4.Controls.Add(this.RateBttn);
+            this.panel4.Controls.Add(this.vehicleBttn);
+            this.panel4.Controls.Add(this.parkSlotBttn);
             this.panel4.Location = new System.Drawing.Point(12, 68);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(152, 357);
@@ -274,17 +252,18 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Admin Panel";
             // 
-            // linkLabel1
+            // linkLogOut
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Brown;
-            this.linkLabel1.Location = new System.Drawing.Point(45, 315);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(66, 18);
-            this.linkLabel1.TabIndex = 8;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Log Out";
+            this.linkLogOut.AutoSize = true;
+            this.linkLogOut.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLogOut.LinkColor = System.Drawing.Color.Brown;
+            this.linkLogOut.Location = new System.Drawing.Point(45, 315);
+            this.linkLogOut.Name = "linkLogOut";
+            this.linkLogOut.Size = new System.Drawing.Size(66, 18);
+            this.linkLogOut.TabIndex = 8;
+            this.linkLogOut.TabStop = true;
+            this.linkLogOut.Text = "Log Out";
+            this.linkLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label3
             // 
@@ -296,76 +275,71 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "ParkSys";
             // 
-            // button1
+            // dashboardBttn
             // 
-            this.button1.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(7, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 35);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Dashboard";
-            this.button1.UseVisualStyleBackColor = true;
+            this.dashboardBttn.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboardBttn.Location = new System.Drawing.Point(7, 58);
+            this.dashboardBttn.Name = "dashboardBttn";
+            this.dashboardBttn.Size = new System.Drawing.Size(138, 35);
+            this.dashboardBttn.TabIndex = 7;
+            this.dashboardBttn.Text = "Dashboard";
+            this.dashboardBttn.UseVisualStyleBackColor = true;
+            this.dashboardBttn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // TranscBttn
             // 
-            this.button2.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(6, 227);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 35);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Transaction";
-            this.button2.UseVisualStyleBackColor = true;
+            this.TranscBttn.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TranscBttn.Location = new System.Drawing.Point(6, 227);
+            this.TranscBttn.Name = "TranscBttn";
+            this.TranscBttn.Size = new System.Drawing.Size(138, 35);
+            this.TranscBttn.TabIndex = 4;
+            this.TranscBttn.Text = "Transaction";
+            this.TranscBttn.UseVisualStyleBackColor = true;
+            this.TranscBttn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // EntryBttn
             // 
-            this.button3.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(6, 185);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(138, 35);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Entry";
-            this.button3.UseVisualStyleBackColor = true;
+            this.EntryBttn.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EntryBttn.Location = new System.Drawing.Point(6, 185);
+            this.EntryBttn.Name = "EntryBttn";
+            this.EntryBttn.Size = new System.Drawing.Size(138, 35);
+            this.EntryBttn.TabIndex = 3;
+            this.EntryBttn.Text = "Entry";
+            this.EntryBttn.UseVisualStyleBackColor = true;
+            this.EntryBttn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // RateBttn
             // 
-            this.button4.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(6, 143);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(138, 35);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Rate";
-            this.button4.UseVisualStyleBackColor = true;
+            this.RateBttn.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RateBttn.Location = new System.Drawing.Point(6, 143);
+            this.RateBttn.Name = "RateBttn";
+            this.RateBttn.Size = new System.Drawing.Size(138, 35);
+            this.RateBttn.TabIndex = 2;
+            this.RateBttn.Text = "Rate";
+            this.RateBttn.UseVisualStyleBackColor = true;
+            this.RateBttn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // vehicleBttn
             // 
-            this.button5.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(6, 99);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(138, 35);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Vehicle";
-            this.button5.UseVisualStyleBackColor = true;
+            this.vehicleBttn.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehicleBttn.Location = new System.Drawing.Point(6, 99);
+            this.vehicleBttn.Name = "vehicleBttn";
+            this.vehicleBttn.Size = new System.Drawing.Size(138, 35);
+            this.vehicleBttn.TabIndex = 1;
+            this.vehicleBttn.Text = "Vehicle";
+            this.vehicleBttn.UseVisualStyleBackColor = true;
+            this.vehicleBttn.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
+            // parkSlotBttn
             // 
-            this.button6.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(7, 268);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(138, 35);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Parking Slot";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 21);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Dasboard";
+            this.parkSlotBttn.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parkSlotBttn.Location = new System.Drawing.Point(7, 268);
+            this.parkSlotBttn.Name = "parkSlotBttn";
+            this.parkSlotBttn.Size = new System.Drawing.Size(138, 35);
+            this.parkSlotBttn.TabIndex = 0;
+            this.parkSlotBttn.Text = "Parking Slot";
+            this.parkSlotBttn.UseVisualStyleBackColor = true;
+            this.parkSlotBttn.Click += new System.EventHandler(this.button6_Click);
             // 
             // adminDashBooard
             // 
@@ -377,8 +351,10 @@
             this.Controls.Add(this.panel2);
             this.Name = "adminDashBooard";
             this.Text = "adminVehicle";
+            this.Load += new System.EventHandler(this.adminDashBooard_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -394,13 +370,8 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TableLayoutPanel layoutRecentTransactions;
-        private System.Windows.Forms.TableLayoutPanel layoutSlotMap;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblAvailable;
@@ -414,14 +385,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLogOut;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button dashboardBttn;
+        private System.Windows.Forms.Button TranscBttn;
+        private System.Windows.Forms.Button EntryBttn;
+        private System.Windows.Forms.Button RateBttn;
+        private System.Windows.Forms.Button vehicleBttn;
+        private System.Windows.Forms.Button parkSlotBttn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
