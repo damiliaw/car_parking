@@ -124,7 +124,7 @@ namespace park_management
                     return;
 
                 if (con.State != ConnectionState.Open)
-                    con.Open(); 
+                    con.Open();
 
                 txtRateID.Text = GenerateRateID();
 
@@ -135,7 +135,7 @@ namespace park_management
                 if (con.State == ConnectionState.Open)
                     con.Close();
             }
-        }   
+        }
 
         private void numGrace_ValueChanged(object sender, EventArgs e)
         {
@@ -165,7 +165,6 @@ namespace park_management
         (
             Rate_ID,
             Vehicle_Type,
-            Grace_Period,
             Base_Fee,
             Hourly_Rate
         )
@@ -173,7 +172,6 @@ namespace park_management
         (
             @id,
             @type,
-            @grace,
             @base,
             @hourly
         )";
@@ -215,7 +213,7 @@ namespace park_management
 
                 MessageBox.Show(ex.Message);
             }
-        }   
+        }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -332,7 +330,6 @@ namespace park_management
                 string query =
                 @"UPDATE Rate
           SET Vehicle_Type = @type,
-              Grace_Period = @grace,
               Base_Fee = @base,
               Hourly_Rate = @hourly
           WHERE Rate_ID = @id";

@@ -205,6 +205,7 @@ namespace park_management
             FormDriverLogin loginForm = new FormDriverLogin();
             loginForm.Show();
             this.Hide();
+            //this.Hide(); 
         }
 
         private void textBoxHours_TextChanged(object sender, EventArgs e)

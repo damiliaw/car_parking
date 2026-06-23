@@ -47,7 +47,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.buttonPrint = new System.Windows.Forms.Button();
-            this.buttonSavePDF = new System.Windows.Forms.Button();
             this.labelTotalPaid = new System.Windows.Forms.Label();
             this.labelPaymentMethod = new System.Windows.Forms.Label();
             this.labelBaseFee = new System.Windows.Forms.Label();
@@ -245,21 +244,12 @@
             // 
             // buttonPrint
             // 
-            this.buttonPrint.Location = new System.Drawing.Point(295, 588);
+            this.buttonPrint.Location = new System.Drawing.Point(350, 583);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(101, 37);
             this.buttonPrint.TabIndex = 18;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = true;
-            // 
-            // buttonSavePDF
-            // 
-            this.buttonSavePDF.Location = new System.Drawing.Point(402, 588);
-            this.buttonSavePDF.Name = "buttonSavePDF";
-            this.buttonSavePDF.Size = new System.Drawing.Size(101, 37);
-            this.buttonSavePDF.TabIndex = 19;
-            this.buttonSavePDF.Text = "Save PDF";
-            this.buttonSavePDF.UseVisualStyleBackColor = true;
             // 
             // labelTotalPaid
             // 
@@ -409,7 +399,6 @@
             this.Controls.Add(this.labelLP);
             this.Controls.Add(this.labelPayID);
             this.Controls.Add(this.labelTransID);
-            this.Controls.Add(this.buttonSavePDF);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -457,7 +446,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button buttonPrint;
-        private System.Windows.Forms.Button buttonSavePDF;
         private System.Windows.Forms.Label labelTotalPaid;
         private System.Windows.Forms.Label labelPaymentMethod;
         private System.Windows.Forms.Label labelBaseFee;

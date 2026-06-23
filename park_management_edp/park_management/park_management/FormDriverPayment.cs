@@ -74,12 +74,17 @@ namespace park_management
         {
             try
             {
+                string vehicleType = "";
+                string colorModel = "";
+                DateTime entryTime = DateTime.Now;
+                DateTime exitTimeNow = entryTime.AddHours(durationHours);
+                string newPaymentID = "PY-001";
+
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
                     conn.Open();
 
                     // Jana Payment ID
-                    string newPaymentID = "PY-001";
                     using (SqlCommand cmd = new SqlCommand("SELECT TOP 1 Payment_ID FROM Payment ORDER BY Payment_ID DESC", conn))
                     {
                         object result = cmd.ExecuteScalar();
@@ -107,7 +112,7 @@ namespace park_management
                     using (SqlCommand cmd = new SqlCommand(
                         "UPDATE Parking_Transaction SET Exit_Timestamp = @Exit WHERE Transaction_ID = @TxID", conn))
                     {
-                        cmd.Parameters.AddWithValue("@Exit", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@Exit", exitTimeNow);
                         cmd.Parameters.AddWithValue("@TxID", transactionId);
                         cmd.ExecuteNonQuery();
                     }
@@ -119,24 +124,40 @@ namespace park_management
                         cmd.Parameters.AddWithValue("@SlotNum", slotNumber);
                         cmd.ExecuteNonQuery();
                     }
+
+                    // Ambil Vehicle Type & Color/Model dari table Vehicle
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT Vehicle_Type, Color_Model FROM Vehicle WHERE License_Plate = @plate", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@plate", licensePlate);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                vehicleType = reader["Vehicle_Type"].ToString();
+                                colorModel = reader["Color_Model"].ToString();
+                            }
+                        }
+                    }
+
+                    // Ambil Entry Timestamp dari table Parking_Transaction
+                    using (SqlCommand cmd = new SqlCommand(
+                        "SELECT Entry_Timestamp FROM Parking_Transaction WHERE Transaction_ID = @TxID", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TxID", transactionId);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                            entryTime = Convert.ToDateTime(result);
+                    }
                 }
 
-                // Tunjuk receipt
-                MessageBox.Show(
-                    $"===== RECEIPT =====\n" +
-                    $"Transaction : {transactionId}\n" +
-                    $"Slot        : {slotNumber}\n" +
-                    $"Duration    : {durationHours} Hour(s)\n" +
-                    $"Base Fee    : RM {baseFee:0.00}\n" +
-                    $"Hourly      : RM {hourlyCharge:0.00}\n" +
-                    $"Total Paid  : RM {totalDue:0.00}\n" +
-                    $"Method      : {selectedMethod}\n" +
-                    $"===================",
-                    "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Balik Form1
-                CarParkManagementSystem.Form1 mainForm = new CarParkManagementSystem.Form1();
-                mainForm.Show();
+                // Tunjuk receipt - bukak Receipt form (bukan MessageBox lagi)
+                Receipt receiptForm = new Receipt(
+                    transactionId, newPaymentID, licensePlate,
+                    vehicleType, colorModel, slotNumber,
+                    entryTime, exitTimeNow, durationHours,
+                    baseFee, hourlyCharge, totalDue, selectedMethod);
+                receiptForm.Show();
                 this.Hide();
             }
             catch (Exception ex)
